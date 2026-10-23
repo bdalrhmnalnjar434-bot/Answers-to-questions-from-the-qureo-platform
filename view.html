@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>عرض ملف | TXT Vault</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/animations.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">T</span> TXT Vault
+    </a>
+    <a href="index.html">كل الملفات</a>
+  </header>
+
+  <main class="container section">
+    <a href="index.html">← العودة للملفات</a>
+    <div class="panel" style="margin-top:20px">
+      <h1 id="fileTitle" style="font-size:30px">جارٍ تحميل الملف...</h1>
+      <p id="fileDescription"></p>
+
+      <div class="file-actions">
+        <button id="copyButton" class="btn btn-primary" disabled>
+          نسخ النص
+        </button>
+        <button id="downloadButton" class="btn btn-outline" disabled>
+          تنزيل TXT
+        </button>
+      </div>
+
+      <pre id="fileContent" class="reader">جارٍ تحميل المحتوى...</pre>
+      <p id="message" class="message" role="status"></p>
+    </div>
+  </main>
+
+  <script type="module" src="JS/view.js"></script>
+  <script src="JS/animations.js"></script>
+</body>
+</html>

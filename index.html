@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>TXT Vault | ملفات نصية</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/animations.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">T</span>
+      TXT Vault
+    </a>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a class="btn btn-outline" href="login.html">دخول المالك</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">YOUR TEXT. YOUR CONTROL.</span>
+      <h1>كل ملفاتك النصية<br><span>في مكان واحد.</span></h1>
+      <p>افتح الملفات العامة، اقرأ محتواها، وانسخ النص أو نزّله بسهولة.</p>
+      <a href="#files" class="btn btn-primary">استكشف الملفات ↓</a>
+    </section>
+
+    <section id="files" class="section">
+      <div class="section-heading">
+        <div>
+          <h2>الملفات العامة</h2>
+          <p>الملفات التي اختار المالك مشاركتها.</p>
+        </div>
+        <span id="fileCount" class="counter">0 ملف</span>
+      </div>
+
+      <input id="searchInput" class="search"
+        type="search" placeholder="ابحث باسم الملف...">
+
+      <div id="fileList" class="file-grid">
+        <p class="muted">جارٍ تحميل الملفات...</p>
+      </div>
+      <p id="message" class="message" role="status"></p>
+    </section>
+  </main>
+
+  <footer>TXT Vault © 2026 — مشاركة الملفات النصية بسهولة</footer>
+  <script type="module" src="JS/files.js"></script>
+  <script src="JS/animations.js"></script>
+</body>
+</html>

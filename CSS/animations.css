@@ -1,0 +1,324 @@
+
+/* =========================================
+   TXT VAULT — FUTURISTIC ANIMATIONS
+   تركواز + زجاج + حركة متوسطة
+   ========================================= */
+
+:root {
+  --motion-cyan: #36f5df;
+  --motion-blue: #36bdf8;
+  --motion-glow: rgba(54, 245, 223, 0.18);
+  --motion-duration: 450ms;
+  --motion-easing: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* تمرير ناعم */
+html {
+  scroll-behavior: smooth;
+}
+
+/* إضاءة خلفية متحركة بدون تغيير ألوان الموقع الأساسية */
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(54, 245, 223, 0.075),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 70%,
+      rgba(54, 189, 248, 0.075),
+      transparent 30%
+    );
+  animation: vaultAmbient 18s ease-in-out infinite alternate;
+}
+
+/* ظهور تدريجي للعناصر */
+.vault-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 650ms var(--motion-easing),
+    transform 650ms var(--motion-easing);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.vault-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* البطاقات الزجاجية */
+.glass-card,
+.file-card,
+.file-item,
+.auth-card,
+.upload-card,
+.stat-card,
+.dashboard-card {
+  transition:
+    transform var(--motion-duration) var(--motion-easing),
+    border-color var(--motion-duration) ease,
+    box-shadow var(--motion-duration) ease,
+    background-color var(--motion-duration) ease;
+}
+
+/* تأثير hover للبطاقات فقط */
+@media (hover: hover) and (pointer: fine) {
+  .glass-card:hover,
+  .file-card:hover,
+  .file-item:hover,
+  .auth-card:hover,
+  .upload-card:hover,
+  .stat-card:hover,
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(54, 245, 223, 0.48);
+    box-shadow:
+      0 14px 38px rgba(0, 0, 0, 0.16),
+      0 0 22px var(--motion-glow);
+  }
+}
+
+/* الأزرار */
+button,
+.btn,
+.button,
+a.btn,
+input[type="submit"],
+input[type="button"] {
+  transition:
+    transform 220ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease,
+    background-color 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  .btn:hover,
+  .button:hover,
+  a.btn:hover,
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    box-shadow: 0 0 18px rgba(54, 245, 223, 0.16);
+  }
+}
+
+button:active,
+.btn:active,
+.button:active,
+a.btn:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  transform: scale(0.975);
+}
+
+/* التركيز بلوحة المفاتيح */
+:where(
+  button,
+  a,
+  input,
+  textarea,
+  select
+):focus-visible {
+  outline: 2px solid var(--motion-cyan);
+  outline-offset: 3px;
+}
+
+/* الحقول */
+input,
+textarea,
+select {
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(54, 245, 223, 0.09);
+}
+
+/* حركة بسيطة للعناوين الرئيسية */
+.hero h1,
+.hero-title,
+.page-title,
+.auth-title {
+  animation: vaultTitleIn 700ms var(--motion-easing) both;
+}
+
+/* خط تركواز متحرك اختياري للعناصر التي تحمل هذا الكلاس */
+.vault-glow-line {
+  position: relative;
+}
+
+.vault-glow-line::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-top: 12px;
+  border-radius: 99px;
+  background: linear-gradient(
+    90deg,
+    var(--motion-cyan),
+    var(--motion-blue),
+    transparent
+  );
+  transform-origin: right;
+  animation: vaultLineIn 700ms 180ms var(--motion-easing) both;
+}
+
+/* وميض هادئ للعناصر التي تحمل هذا الكلاس */
+.vault-pulse {
+  animation: vaultPulse 3.2s ease-in-out infinite;
+}
+
+/* مؤشر تحميل عام */
+.vault-spinner {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  border: 2px solid rgba(54, 245, 223, 0.2);
+  border-top-color: var(--motion-cyan);
+  border-radius: 50%;
+  animation: vaultSpin 800ms linear infinite;
+}
+
+/* دخول صفوف الجداول */
+.vault-table-row {
+  animation: vaultRowIn 400ms var(--motion-easing) both;
+}
+
+/* الحركات */
+@keyframes vaultAmbient {
+  from {
+    transform: translate3d(-1%, -1%, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(1%, 1%, 0) rotate(4deg);
+  }
+}
+
+@keyframes vaultTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vaultLineIn {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes vaultPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(54, 245, 223, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(54, 245, 223, 0.13);
+  }
+}
+
+@keyframes vaultSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vaultRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* احترام إعداد تقليل الحركة في الجهاز */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .vault-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ظهور العناصر أثناء التمرير */
+.vault-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.vault-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* حركة صفوف الجداول */
+.vault-table-row {
+  animation: vaultRowEnter 0.45s ease both;
+}
+
+@keyframes vaultRowEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vault-reveal,
+  .vault-table-row {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

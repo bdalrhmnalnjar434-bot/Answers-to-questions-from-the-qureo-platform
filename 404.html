@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>تم إيقاف هذا الموقع</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1d23;--muted:#5b6270;--accent:#2563eb;--accent-text:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b21;--text:#f1f3f6;--muted:#9aa3b2;--accent:#3b82f6;--accent-text:#fff}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:var(--card);max-width:440px;width:100%;padding:32px 24px;border-radius:16px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.icon{font-size:44px;margin-bottom:12px}
+h1{font-size:22px;margin:0 0 10px}
+p{color:var(--muted);line-height:1.8;margin:0 0 22px}
+a.btn{display:inline-block;background:var(--accent);color:var(--accent-text);text-decoration:none;padding:12px 28px;border-radius:10px;font-weight:600}
+#count{margin-top:16px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">🔒</div>
+  <h1>تم إيقاف هذا الموقع</h1>
+  <p>صدر إصدار أحدث من المنصة، انتقل إلى الموقع الجديد للمتابعة</p>
+  <a id="go" class="btn" href="#" style="display:none">الانتقال إلى الموقع الجديد</a>
+  <div id="count"></div>
+</div>
+<script>
+// ===== الإعدادات =====
+var NEW_SITE_URL = "https://bdalrhmnalnjar434-bot.github.io/TXT-Vault0/";
+var AUTO_REDIRECT_SECONDS = 0; // 0 = بدون تحويل تلقائي، مثلاً 8
+// =====================
+(function(){
+  if(!/^https:\/\//.test(NEW_SITE_URL)) return;
+  var a=document.getElementById("go");
+  a.href=NEW_SITE_URL; a.style.display="inline-block";
+  if(AUTO_REDIRECT_SECONDS>0){
+    var s=AUTO_REDIRECT_SECONDS, c=document.getElementById("count");
+    c.textContent="سيتم نقلك تلقائيًا خلال "+s+" ثانية";
+    var t=setInterval(function(){
+      s--; c.textContent="سيتم نقلك تلقائيًا خلال "+s+" ثانية";
+      if(s<=0){clearInterval(t);location.href=NEW_SITE_URL;}
+    },1000);
+  }
+})();
+</script>
+</body>
+</html>

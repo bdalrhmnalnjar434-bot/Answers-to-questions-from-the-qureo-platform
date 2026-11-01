@@ -25,4 +25,4 @@
   }
   if(document.body)mount();else document.addEventListener("DOMContentLoaded",mount);
   if(ok&&AUTO_REDIRECT_SECONDS>0)setTimeout(function(){location.href=NEW_SITE_URL},AUTO_REDIRECT_SECONDS*1000);
-})();
+})();   
